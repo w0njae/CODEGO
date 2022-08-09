@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODEGO main</title>
+    <link rel="stylesheet" href="master.css">
+    <link rel="icon" href="images/favicon.png">
+    <!--[if lt IE 9]>
+	<script src="html5shiv-master/dist/html5shiv.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-1.8.1.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
+    <script src="js/swipe.js"></script>
+
+    <script>
+        $(function(){
+            var m=$('#gnb>ul>li>a');
+
+            m.each(function(){
+                $(this).click(function(){
+                    $(this).next().slideToggle(200)
+                    .parent().siblings().find('ul:visible').slideUp(400);
+                });
+        
+			});
+		});
+        /* a를 클릭하면 그에 맞는 ul 펼침 다른 a 클릭시 펼쳐져있던 ul 숨김*/
+    </script>
+
+    <script>
+        $(function(){
+		    var $bannNum=0;//변수 선언 초기값
+            var $beginNum=0;
+        /*.allMenu_menu 클릭했을때 네비게이션 항목들*/
+        $('.allMenu_menu').click(function(){ //메뉴버튼 클릭시
+                $('.gnb-sub').slideToggle('fast'); //.gnb 슬라이드토글
+        });
+
+        /*햄버거 메뉴 클릭 시 햄버거가 X 모양으로 변경*/
+        const menuTrigger = document.querySelector('.allMenu_menu');
+
+        menuTrigger.addEventListener('click', (event) => {
+        event.currentTarget.classList.toggle('active-1');
+        });
+             
+        // $('.lecture_button').click(function(){ //강의버튼 클릭시
+        //         $('.lecture').slideToggle('fast'); //.lecture 슬라이드토글
+        // });
+
+        // $('.comunity_button').click(function(){ //커뮤니티버튼 클릭시
+        //         $('.comunity').slideToggle('fast'); //.comunity 슬라이드토글
+        // });
+
+        // $('.roadmap_button').click(function(){ //로드맵버튼 클릭시
+        //         $('.roadmap').slideToggle('fast'); //.roadmap 슬라이드토글
+        // });
+
+        // $('.allMenu_search').click(function(){ //검색버튼 클릭시
+        //         $('.search_box').slideToggle('slow'); //검색박스 슬라이드토글
+        // });
+
+        $('.help').click(function(){ //검색버튼 클릭시
+                $('.help_box').slideToggle('slow'); //검색박스 슬라이드토글
+        });
+
+        /*next btn를 클릭할때: $bannNum++(1씩 증가하기) 1180px만큼 이동*/
+        $('.next').click(function(){
+			if($bannNum>=4)return false;
+			$bannNum++;
+			var $banner_w=$('#banner').width();
+			$('#TopBanner').animate({'left':-$banner_w*$bannNum},400,function(){
+				$('#banner_roll img').attr('src','images/state_out.png');//초기값
+				$('#banner_roll img').eq($bannNum)
+				.attr('src','images/state_over.png');
+			});
+		});
+
+        /*prev btn:$bannNum--(1씩 감소하기) 1180px만큼 이동*/
+		$('.prev').click(function(){
+			if($bannNum<=0)return false;
+			$bannNum--;
+			var $banner_w=$('#banner').width();
+			$('#TopBanner').animate({'left':-$banner_w*$bannNum},400,function(){
+				$('#banner_roll img').attr('src','images/state_out.png');
+				$('#banner_roll img').eq($bannNum)
+				.attr('src','images/state_over.png');
+			});
+		});
+        /*스와이프*/
+        $('#banner').bind('swipeleft', function(){
+			$('.next').trigger('click');
+		});
+        $('#banner').bind('swiperight', function(){
+			$('.prev').trigger('click');
+		});
+
+        /*arrowR btn를 클릭할때: $beginNum++(1씩 증가하기) 1180px만큼 이동*/
+        $('.arrowR').click(function(){
+			if($beginNum>=1)return false;
+			$beginNum++;
+			var $begin_w=$('.begin-box').width();
+			$('.begin_book').animate({'left':-$begin_w*$beginNum},400,function(){
+			});
+		});
+        /*arrowL btn를 클릭할때: $beginNum--(1씩 감소하기) 1180px만큼 이동*/
+		$('.arrowL').click(function(){
+			if($beginNum<=0)return false;
+			$beginNum--;
+			var $begin_w=$('.begin-box').width();
+			$('.begin_book').animate({'left':-$begin_w*$beginNum},400,function(){
+			});
+		});
+
+        /*스와이프*/
+        $('.begin-box').bind('swipeleft', function(){
+			$('.arrowR').trigger('click');
+		});
+        $('.begin-box').bind('swiperight', function(){
+			$('.arrowL').trigger('click');
+		});
+
+    });
+    
+    </script>
+    <style>
+
+    </style>
+</head>
+<body id="main">
+    <header id="header">
+        <div id="Top-nav">
+            <div id="TopHeader">
+                <div>
+                    <h1><a href="main.html"><img src="images/CODEGO.png" alt="CODEGO"></a></h1>
+                    <div class="allMenu_view">
+                        <a href="#" class="allMenu_search"><img src="images/search.png" alt="검색"></a>
+                        <a href="#" class="allMenu_menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+                <nav id="gnb">
+                    <ul class="gnb-sub">
+                        <li><a href="#" class="lecture_button">강의</a>
+                            <ul class="lecture">
+                                    <li><a href="lecture.html">전체 강의</a></li>
+                                    <li><a href="lecture.html">기초 강의</a></li>
+                                    <li><a href="lecture.html">웹 개발</a></li>
+                                    <li><a href="lecture.html">프론트엔드·백엔드</a></li>
+                                    <li><a href="lecture.html">모바일 앱 개발</a></li>
+                                    <li><a href="lecture.html">프로그래밍 언어</a></li>
+                                    <li><a href="lecture.html">알고리즘·자료구조</a></li>
+                                    <li><a href="lecture.html">데이터 사이언스</a></li>
+                                    <li><a href="lecture.html">데이터베이스</a></li>
+                                    <li><a href="lecture.html" class="last">게임 개발</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="comunity_button">커뮤니티</a>
+                            <ul class="comunity">
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="#">Study</a></li>
+                                <li><a href="#">수강후기</a></li>
+                                <li><a href="#" class="last">멘토링</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="roadmap_button">로드맵</a>
+                            <ul class="roadmap">
+                                <li><a href="roadmap.html">추천 로드맵</a></li>
+                                <li><a href="roadmap.html" class="last">나의 로드맵</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">채용정보</a>
+                            <ul>
+                                <li><a href="#">채용 공고</a></li>
+                                <li><a href="#">코드고 채용</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="ui">
+                    <form method="post" class="search_box">
+                        <label for="u-search"></label>
+                        <input type="search" id="u-serach">
+                        <input type="image" src="images/search.png" alt="submit">
+                    </form>
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="banner">
+            <div id="TopBanner">
+                <div>
+                    <a href="lecture.html"><img src="images/banner-level.gif" alt="상단배너1"></a>
+                    <div class="BannerText">
+                        <h2>입문자를 위한<br>
+                        CODEGO GUIDE</h2>
+                        <p>코드고와 함께 한 단계씩 성장해요.</p>
+                    </div>
+                    <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/banner-top.gif" alt="상단배너2"></a>
+                    <div class="BannerText">
+                        <h2>이달의 CODEGO<br>
+                        TOP 강의는?</h2>
+                        <p>지금 바로 확인하세요!</p>
+                    </div>
+                    <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/banner-NEW.gif" alt="상단배너3"></a>
+                    <div class="BannerText">
+                        <h2>선물이 도착했어요!<br>
+                        NEW 강의 할인쿠폰</h2>
+                        <p>할인된 가격으로 만나보세요.</p>
+                    </div>
+                    <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/banner-green.png" alt="상단배너4"></a>
+                    <div class="BannerText">
+                        <h2>뭘 들어야 하지?<br>
+                        나에게 딱 맞는 입문 강의</h2>
+                        <p>당신에게 어울리는 강의를 추천해요.</p>
+                    </div>
+                    <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                </div>
+                <div>
+                    <a href="#"><img src="images/banner-10.png" alt="상단배너5"></a>
+                    <div class="BannerText">
+                        <h2>내가 배우는 이 언어가<br>
+                        10년 후에도 사용될까?</h2>
+                        <p>어떤 언어가 사용되고 있을까?</p>
+                    </div>
+                    <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                </div>
+            
+            </div>
+            <div id="arrow">
+                <a href="#" class="prev">
+                    <img src="images/btn_prev.png" alt="이전">
+                </a>
+                <a href="#" class="next">
+                    <img src="images/btn_next.png" alt="다음">
+                </a>
+            </div>
+            <div id="banner_roll">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="images/state_over.png" alt="체크상태">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/state_out.png" alt="un체크상태">
+                        </a>
+                    </li>	
+                    <li>
+                        <a href="#">
+                            <img src="images/state_out.png" alt="un체크상태">
+                        </a>
+                    </li>	
+                    <li>
+                        <a href="#">
+                            <img src="images/state_out.png" alt="un체크상태">
+                        </a>
+                    </li>	
+                    <li>
+                        <a href="#">
+                            <img src="images/state_out.png" alt="un체크상태">
+                        </a>
+                    </li>	
+                </ul>
+            </div>
+        </div>
+        <div id="m-banner">
+            <div id="m-banner-list">
+                <div>
+                    <a href="lecture.html"><img src="images/m-banner-1.png" alt="배너1"></a>
+                    <div class="BannerText">
+                        <h2>입문자를 위한<br>
+                        CODEGO GUIDE</h2>
+                        <p>코드고와 함께 한 단계씩 성장해요.</p>
+                        <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                    </div>
+                </div>
+                <div>
+                    <a href="lecture.html"><img src="images/m-banner-2.png" alt="상단배너2"></a>
+                    <div class="BannerText">
+                        <h2>이달의 CODEGO<br>
+                        TOP 강의는?</h2>
+                        <p>지금 바로 확인하세요!</p>
+                        <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                    </div>
+                    
+                </div>
+                <div>
+                    <a href="lecture.html"><img src="images/m-banner-3.png" alt="상단배너3"></a>
+                    <div class="BannerText">
+                        <h2>선물이 도착했어요!<br>
+                        NEW 강의 할인쿠폰</h2>
+                        <p>할인된 가격으로 만나보세요.</p>
+                        <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                    </div>
+
+                </div>
+                <div>
+                    <a href="lecture.html"><img src="images/m-banner-4.png" alt="상단배너4"></a>
+                    <div class="BannerText">
+                        <h2>어떤게 좋지?<br>
+                        현직 개발자의 추천!</h2>
+                        <p>딱 맞는 강의를 추천해줄께요.</p>
+                        <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                    </div>
+
+                </div>
+                <div>
+                    <a href="lecture.html"><img src="images/m-banner-5.png" alt="상단배너5"></a>
+                    <div class="BannerText">
+                        <h2>이 언어가<br>
+                        10년 후에도 사용될까?</h2>
+                        <p>어떤 언어가 사용되고 있을까?</p>
+                        <div class="TopButton"><a href="lecture.html">강의보러가기 →</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <article id="review">
+            <div>
+                <h2><span>20,906</span>명이 <br>
+                    코드고와 함께 하고 있습니다.</h2>
+                <p>코드고는 강의의 수강생수, 평점을 투명하게 공개합니다.<br>
+                    실제로 많은 온오프라인 학원들은 단기적 성과를 높이기 위해 잘나온<br>
+                    특정 후기만 노출 하거나, 아예 숨겨버리는 경우가 많습니다.<br>
+                    반면 코드고는 강의에 대한 후기, 학생수 등 정보를 투명하게 공개합니다.<br>
+                    신뢰성을 바탕으로 학습자들이 더 좋은 컨텐츠를 선택하고 교육의 질을 높입니다.</p>
+                <ul>
+                    <li><a href="#">수강후기 더보기</a></li>
+                    <li><a href="#">기능/강좌 찾아보기</a></li>
+                </ul>
+            </div>
+            <ul>
+                <li>
+                    <p>조아라 님(수강생) <span>37분 전</span></p>
+                    <p>스프링 입문 - 코드로 배우는 부트, 웹, DB기술</p>
+                    <p>기초부터 하나씩 알려주셔서 쉽게 따라갈 수 있어요!</p>
+                </li>
+                <li>
+                    <p>김진형 님(수강생) <span>1시간 전</span></p>
+                    <p>입문자들을 위한 HTTP 웹 기본 지식 </p>
+                    <p>HTTP웹 기본 지식들을 얻을 수 있어서 좋았습니다!  </p>
+                </li>
+                <li>
+                    <p>송태훈 님(수강생) <span>2시간 전</span></p>
+                    <p>데이터베이스 오라클(Oracle)</p>
+                    <p>오라클에 대해 더 알 수 있는 시간이었습니다.</p>
+                </li>
+                <li>
+                    <p>신반석 님(수강생) <span>3시간 전</span></p>
+                    <p>이것이 진짜 크롤링이다 - 기본편</p>
+                    <p>지금까지 들었던 강의 중 단언컨데  최고였어요!</p>
+                </li>
+                <li>
+                    <p>남관현 님(수강생) <span>6시간 전</span></p>
+                    <p>스프링 입문 - 코드로 배우는 부트, 웹, DB기술</p>
+                    <p>기초부터 하나씩 알려주셔서 쉽게 따라갈 수 있어요!</p>
+                </li>
+                <li>
+                    <p>이몽용 님(수강생) <span>6시간 전</span></p>
+                    <p>입문자들을 위한 HTTP 웹 기본 지식 </p>
+                    <p>HTTP웹 기본 지식들을 얻을 수 있어서 좋았습니다!  </p>
+                </li>
+                <li>
+                    <p>변정환 님(수강생) <span>7시간 전</span></p>
+                    <p>데이터베이스 오라클(Oracle)</p>
+                    <p>오라클에 대해 더 알 수 있는 시간이었습니다.</p>
+                </li>
+                <li>
+                    <p>황인재 님(수강생) <span>9시간 전</span></p>
+                    <p>이것이 진짜 크롤링이다 - 기본편</p>
+                    <p>지금까지 들었던 강의 중 단언컨데  최고였어요!</p>
+                </li>
+            </ul>
+        </article>
+        <article id="begin">
+            <h3><span>처음</span>이라면 이 강의를 추천합니다!</h3>
+            <div class="arrowL"><img src="images/arrowL.png" alt="화살표"></div>
+            <div class="arrowR"><img src="images/arrowR.png" alt="화살표"></div>
+            <div class="begin-box">
+                <div class="begin_book">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="beginTitle">
+                                    <img src="images/begin-1.png" alt="추천강의1">
+                                    <p>입문자를 위한! 반응형 웹!</p>
+                                    <p>유노코딩</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 42,000</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="beginTitle">
+                                    <img src="images/begin-2.png" alt="추천강의2">
+                                    <p>이론부터 쉽게 배우는 IoT</p>
+                                    <p>황인재</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 15,000</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="beginTitle">
+                                    <img src="images/begin-3.png" alt="추천강의3">
+                                    <p>시작부터 배포까지!</p>
+                                    <p>판다코딩</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 35,000</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="#">
+                                <div class="beginTitle">  
+                                    <img src="images/begin-4.png" alt="추천강의4">
+                                    <p>제대로 배우는 C언어 입문</p>
+                                    <p>정혜경</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 30,000</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="beginTitle">
+                                    <img src="images/begin-5.png" alt="추천강의1">
+                                    <p>야코비안 행렬 배워보기</p>
+                                    <p>허수아비</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 21,000</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="beginTitle">
+                                    <img src="images/begin-6.png" alt="추천강의2">
+                                    <p>Python Cos Pro 1급 풀이</p>
+                                    <p>김종한</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 19,900</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="beginTitle">
+                                    <img src="images/begin-7.png" alt="추천강의3">
+                                    <p>실전! 웹사이트 제작!</p>
+                                    <p>장쌤</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 38,000</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="#">
+                                <div class="beginTitle">  
+                                    <img src="images/begin-8.png" alt="추천강의4">
+                                    <p>GUI & Tkinter 배우기</p>
+                                    <p>최진승</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 13,000</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <article id="service">
+            <h3>다양한 서비스에 <span>참여</span>하고 <span>소통</span>해 보세요.</h3>
+            <div>
+                <ul class="service-box">
+                    <li>
+                        <h4>지식공유자 되기<img src="images/crown.png" alt="왕관"></h4>
+                        <p>코드고 팀원들과 자유롭게 소통하고 내가 아는 내용,
+                            모르는 내용을 공유하며 배워봐요. </p>
+                        <a href="#">커뮤니티 바로가기</a>
+                    </li>
+                    <li>
+                        <h4>멘토 & 멘티 신청<img src="images/hand-heart.png" alt="손하트"></h4>
+                        <p>업계 선배들 혹은 동료들에게서 인사이트를
+                            얻어보세요. 더 빨리, 더 멀리 갈 수 있어요. </p>
+                            <a href="#">멘토링 신청하기</a>
+                    </li>
+                    <li>
+                        <h4>기초부터 다지기<img src="images/children.png" alt="새싹"></h4>
+                        <p>잘 설계된 로드맵을 따라 효율적으로 강의
+                            를 학습하고 좋은 로드맵을 다른 사람들과
+                            공유해봐요. </p>
+                            <a href="roadmap.html">로드맵 참여하기</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <article id="newEdu">
+            <h3>코드고만의 <span>새로운 교육</span></h3>
+            <div class="newEdu_01">
+                <img src="images/content1.png" alt="콘텐츠1">
+                <div>
+                    <p>교육 콘텐츠 제작</p>
+                    <h4>성장으로 이어지는<br>
+                    실무 중심 교육 콘텐츠</h4>
+                    <p>훈련생이 성장하기 위해서는 기술변화에 발맞춰 교육 콘텐츠도</p>
+                    <p>지속적으로 변화해야 합니다. 코드고는 최신 기술 동향에 발맞춰</p>
+                    <p>실무 중심의 살아있는 교육 콘텐츠를 만듭니다.    </p>
+                </div>
+            </div>
+            <div class="newEdu_02">
+                <div>
+                    <p>교육 사업 A to Z</p>
+                    <h4>모집부터<br>
+                    교육, 취업 연계까지</h4>
+                    <p>고용노동부, 정보통신 산업진흥원, 정보통신 기획평가원 등 디지털</p>
+                    <p>교육에 관심 있는 정부 기관 및 다양한 기업과 제휴하여 모집부터</p>
+                    <p>선발, 교육, 수료, 취업 연계까지 교육생의 성장 여정을 함께합니다. </p>
+                </div>
+                <img src="images/content2.png" alt="콘텐츠2">
+            </div>
+            <div>
+                <img src="images/content3.png" alt="콘텐츠3">
+                <div>
+                    <p>온라인 SW 교육</p>
+                    <h4>교육 성과는 높이고<br>
+                    관리 시간은 줄이고</h4>
+                    <p>SW 교육, 일반 직무 교육, 법정 의무 교육 등 목적에 다양한</p>
+                    <p>포맷의 콘텐츠를 제작하고 이용할 수 있습니다. 또 학습, 소통,</p>
+                    <p> 라이브 강의, 자료 공유까지다양한 교육방식을 적용할 수 있습니다.</p>
+                </div>
+            </div>
+        </article>
+        <aside id="SubBanner">
+            <div id="BottomBanner">
+                <ul class="sub-banner">
+                    <li>
+                        <a href="roadmap.html"><img src="images/sub-banner1.png" alt="subbanner-1"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner2.png" alt="subbanner-2"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner3.png" alt="subbanner-3"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner4.png" alt="subbanner-4"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner.png" alt="subbanner-5"></a>
+                    </li>
+                </ul>
+                <form method="post" class="button_box">
+                    <input type="radio" class="button1" name="button" checked>
+                    <input type="radio" class="button2" name="button">
+                    <input type="radio" class="button3" name="button">
+                    <input type="radio" class="button4" name="button">
+                    <input type="radio" class="button5" name="button">
+                </form>
+                <script>
+                    document.querySelector('.button1').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(0%)';
+                    });
+                    document.querySelector('.button2').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-20%)';
+                    });
+                    document.querySelector('.button3').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-40%)';
+                    });
+                    document.querySelector('.button4').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-60%)';
+                    });
+                    document.querySelector('.button5').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-80%)';
+                    });
+                </script>
+            </div>
+            <div id="BottomBanner-M">
+                <ul class="sub-banner-M">
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner1.png" alt="subbanner-1m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner2.png" alt="subbanner-2m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner3.png" alt="subbanner-3m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner4.png" alt="subbanner-4m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner5.png" alt="subbanner-5m"></a>
+                    </li>
+                </ul>
+                <form method="post" class="button_box">
+                    <input type="radio" class="button1M" name="button" checked>
+                    <input type="radio" class="button2M" name="button">
+                    <input type="radio" class="button3M" name="button">
+                    <input type="radio" class="button4M" name="button">
+                    <input type="radio" class="button5M" name="button">
+                </form>
+                <script>
+                    document.querySelector('.button1M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(0%)';
+                    });
+                    document.querySelector('.button2M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-20%)';
+                    });
+                    document.querySelector('.button3M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-40%)';
+                    });
+                    document.querySelector('.button4M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-60%)';
+                    });
+                    document.querySelector('.button5M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-80%)';
+                    });
+                </script>
+            </div>
+            
+        </aside>
+        
+        
+    </section>
+    <section>
+        <div class="help_button">
+            <a href="#" class="help">
+                <img src="images/help.png" alt="고객센터">
+            </a>
+            <div class="help_box">
+                <h4><span>코드고</span> 고객지원</h4>
+                <p>상담 시간: 10:00 - 19:00 (평일)<br>
+                점심 시간: 12:10 - 13:00</p>
+                <ul>
+                    <li><a href="#">새문의하기</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">공지사항</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+    <footer>
+        <div>
+            <h2>지금, 코드고를 시작해 보세요.</h2>
+            <a href="#"><img src=images/footer-button.png alt="시작버튼"></a>
+        </div>
+        <div id="footer-R">
+            <ul>
+                <li><a href="#">코드고 소개</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">청소년보호정책</a></li>
+                <li><a href="#">사업자정보확인</a></li>
+            </ul>
+            <br>
+            <p>(주)코드고 대표:김원재 ㅣ E-mail:codego@codego.co.kr ㅣ 사업자번호:123-45-6789
+            ㅣ 주소:경기도 부천시 심곡동 172-15 경동빌딩 5층 ㅣ 대표번호:010-1234-5678
+            <br>
+            Copyrght 2022. CODEGO All Rights Reserved.<br>
+            (이 웹사이트는 edge 이상 버전과 호환되어있습니다.)</p>
+        </div>
+    </footer>
+</body>
+</html>

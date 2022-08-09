@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODEGO roadmap</title>
+    <link rel="stylesheet" href="master.css">
+    <link rel="icon" href="images/favicon.png">
+    <!--[if lt IE 9]>
+	<script src="html5shiv-master/dist/html5shiv.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-1.8.1.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
+    <script src="js/swipe.js"></script>
+
+    <script>
+        $(function(){
+            var m=$('#gnb>ul>li>a');
+
+            m.each(function(){
+                $(this).click(function(){
+                    $(this).next().slideToggle(200)
+                    .parent().siblings().find('ul:visible').slideUp(400);
+                });
+        
+			});
+		});
+        /* a를 클릭하면 그에 맞는 ul 펼침 다른 a 클릭시 펼쳐져있던 ul 숨김*/
+    </script>
+
+    <script>
+        $(function(){
+            var $mapNum=0;
+            var $mapNum2=0;
+            var $mapNum3=0;
+            var $mapNum4=0;
+
+            /*.allMenu_menu 클릭했을때 네비게이션 항목들*/
+            $('.allMenu_menu').click(function(){ //메뉴버튼 클릭시
+                    $('.gnb-sub').slideToggle('fast'); //.gnb 슬라이드토글
+            });
+
+            /*햄버거 메뉴 클릭 시 햄버거가 X 모양으로 변경*/
+            const menuTrigger = document.querySelector('.allMenu_menu');
+
+            menuTrigger.addEventListener('click', (event) => {
+            event.currentTarget.classList.toggle('active-1');
+            });
+
+            // $('.lecture_button').click(function(){ //강의버튼 클릭시
+            //         $('.lecture').slideToggle('fast'); //.lecture 슬라이드토글
+            // });
+
+            // $('.comunity_button').click(function(){ //커뮤니티버튼 클릭시
+            //         $('.comunity').slideToggle('fast'); //.comunity 슬라이드토글
+            // });
+
+            // $('.roadmap_button').click(function(){ //로드맵버튼 클릭시
+            //         $('.roadmap').slideToggle('fast'); //.roadmap 슬라이드토글
+            // });
+
+            $('.from').click(function(){
+                $('.from_box').fadeToggle(200)
+            });
+            $('.to').click(function(){
+                $('.to_box').fadeToggle(200)
+            });
+
+            $('.rightcos').click(function(){
+                $('.rightbox').slideToggle(400)
+            });
+
+            $('.bottomcos').click(function(){
+                $('.bottombox').fadeToggle(400)
+            });
+
+            $('.road_buttonR').click(function(){
+                if($mapNum>=1)return false;
+                $mapNum++;
+                var $road_w=$('.road_top').width();
+                $('.road_middle').animate({'left':-$road_w*$mapNum},600,function(){
+                });
+            });
+
+            $('.road_buttonL').click(function(){
+                if($mapNum<=0)return false;
+                $mapNum--;
+                var $road_w=$('.road_top').width();
+                $('.road_middle').animate({'left':-$road_w*$mapNum},600,function(){
+                });
+            });
+
+            $('.road_buttonR2').click(function(){
+                if($mapNum2>=1)return false;
+                $mapNum2++;
+                var $road_w=$('.road_top2').width();
+                $('.road_middle2').animate({'left':-$road_w*$mapNum2},600,function(){
+                });
+            });
+
+            $('.road_buttonL2').click(function(){
+                if($mapNum2<=0)return false;
+                $mapNum2--;
+                var $road_w=$('.road_top2').width();
+                $('.road_middle2').animate({'left':-$road_w*$mapNum2},600,function(){
+                });
+            });
+
+            $('.road_buttonR3').click(function(){
+                if($mapNum3>=1)return false;
+                $mapNum3++;
+                var $road_w=$('.road_top3').width();
+                $('.road_middle3').animate({'left':-$road_w*$mapNum3},600,function(){
+                });
+            });
+
+            $('.road_buttonL3').click(function(){
+                if($mapNum3<=0)return false;
+                $mapNum3--;
+                var $road_w=$('.road_top3').width();
+                $('.road_middle3').animate({'left':-$road_w*$mapNum3},600,function(){
+                });
+            });
+
+            $('.road_buttonR4').click(function(){
+                if($mapNum4>=1)return false;
+                $mapNum4++;
+                var $road_w=$('.road_top4').width();
+                $('.road_middle4').animate({'left':-$road_w*$mapNum4},600,function(){
+                });
+            });
+
+            $('.road_buttonL4').click(function(){
+                if($mapNum4<=0)return false;
+                $mapNum4--;
+                var $road_w=$('.road_top4').width();
+                $('.road_middle4').animate({'left':-$road_w*$mapNum4},600,function(){
+                });
+            });
+
+            $('.help').click(function(){ //고객센터 버튼 클릭시
+                    $('.help_box').fadeToggle('fast'); //고객센터 박스 슬라이드토글
+            });
+
+        });
+    </script>
+    <script>
+        $(function(){
+            var roadOffset = $('.roadmap_rightbox').offset();
+            $(window).scroll(function(){
+                if($(document).scrollTop() >= roadOffset.top){
+                    $('.roadmap_rightbox').addClass('roadFixed');
+                }else{
+                        $('.roadmap_rightbox').removeClass('roadFixed');
+                }
+            });
+        });
+    </script>
+</head>
+<body id="roadmap">
+    <header id="header">
+        <div id="Top-nav">
+            <div id="TopHeader">
+                <div>
+                    <h1><a href="index.html"><img src="images/CODEGO.png" alt="CODEGO"></a></h1>
+                    <div class="allMenu_view">
+                        <a href="#" class="allMenu_search"><img src="images/search.png" alt="검색"></a>
+                        <a href="#" class="allMenu_menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+                <nav id="gnb">
+                    <ul class="gnb-sub">
+                        <li><a href="#" class="lecture_button">강의</a>
+                            <ul class="lecture">
+                                    <li><a href="lecture.html">전체 강의</a></li>
+                                    <li><a href="lecture.html">기초 강의</a></li>
+                                    <li><a href="lecture.html">웹 개발</a></li>
+                                    <li><a href="lecture.html">프론트엔드·백엔드</a></li>
+                                    <li><a href="lecture.html">모바일 앱 개발</a></li>
+                                    <li><a href="lecture.html">프로그래밍 언어</a></li>
+                                    <li><a href="lecture.html">알고리즘·자료구조</a></li>
+                                    <li><a href="lecture.html">데이터 사이언스</a></li>
+                                    <li><a href="lecture.html">데이터베이스</a></li>
+                                    <li><a href="lecture.html" class="last">게임 개발</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="comunity_button">커뮤니티</a>
+                            <ul class="comunity">
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="#">Study</a></li>
+                                <li><a href="#">수강후기</a></li>
+                                <li><a href="#" class="last">멘토링</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="roadmap_button">로드맵</a>
+                            <ul class="roadmap">
+                                <li><a href="roadmap.html">추천 로드맵</a></li>
+                                <li><a href="roadmap.html" class="last">나의 로드맵</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">채용정보</a>
+                            <ul>
+                                <li><a href="#">채용 공고</a></li>
+                                <li><a href="#">코드고 채용</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="ui">
+                    <form method="post" class="search_box">
+                        <label for="u-search"></label>
+                        <input type="search" id="u-serach">
+                        <input type="image" src="images/search.png" alt="submit">
+                    </form>
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div id="roadmap_banner">
+            <div>
+                <h2>코드고 로드맵에 따라<br>
+                    개발 여정을 시작해보세요.</h2>
+                <div class="level">
+                    <div class="level_choice">
+                        <div>
+                            <a href="#">
+                                <ul class="from">
+                                    <li><img src="images/place.png" alt="좌표"> FROM</li>
+                                    <li>현재 레벨을 선택해주세요.</li>
+                                </ul>
+                            </a>
+                            <a href="#">
+                                <ul class="to">
+                                    <li><img src="images/place.png" alt="좌표"> TO</li>
+                                    <li>목표 레벨을 선택해주세요.</li>
+                                </ul>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="level_search">
+                        <p>나와 맞는 여정 찾기 <img src="images/roadmap_search.png" alt="돋보기"></p>
+                        <ul class="from_box">
+                            <li><a href="#chobo">코딩이 처음이에요. <span>입문</span></a></li>
+                            <li><a href="#chobo">기본적인 문법을 알아요. <span>초급</span></a></li>
+                            <li><a href="#chobo">혼자서 작업이 가능해요. <span>중급</span></a></li>
+                        </ul>
+                        <ul class="to_box">
+                            <li><a href="#">서버 관리에 능숙한 <span>백엔드 개발자</span></a></li>
+                            <li><a href="#">기초가 탄탄한 <span>풀스택 개발자</span></a></li>
+                            <li><a href="#">파이썬과 딥러닝에 자신있는 <span>딥러닝 엔지니어</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div id="roadmap_contents">
+            <div id="roadmap_left">
+                <h3 id="chobo"><img src="images/chookha.png" alt="축하">처음 시작하는 사람들을 위한 입문 코스 </h3>
+                <div class="roadmap_bg">
+                    <div>
+                        <h4 id="chobo1">파이썬으로 시작하는 딥러닝 입문</h4>
+                        <div class="ticket">
+                            <div class="tic-left">
+                                <h5>파이썬과 딥러닝 두마리 토끼를 다잡고 싶다면!</h5>
+                                <div class="road_button">
+                                    <img src="images/roadmap_left.png" alt="왼쪽" class="road_buttonL">
+                                    <img src="images/roadmap_right.png" alt="오른쪽" class="road_buttonR">
+                                </div>
+                                <div class="road_top">
+                                    <div class="road_middle">
+                                        <ul class="road_list">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_py01.png" alt="파이썬1">
+                                                        <ul>
+                                                            <li>딥 러닝을 위한 파이썬 LV.1</li>
+                                                            <li>Shin's Lab</li>
+                                                            <li>￦ 39,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_py02.png" alt="파이썬2">
+                                                        <ul>
+                                                            <li>딥 러닝을 위한 파이썬 LV.2</li>
+                                                            <li>Shin's Lab</li>
+                                                            <li>￦ 39,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_py03.png" alt="파이썬3">
+                                                        <ul>
+                                                            <li>데이터 시각화를 위한 파이썬</li>
+                                                            <li>Shin's Lab</li>
+                                                            <li>￦ 39,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_py04.png" alt="파이썬4">
+                                                        <ul>
+                                                            <li>딥러닝 네트워크의 연산</li>
+                                                            <li>Shin's Lab</li>
+                                                            <li>￦ 39,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_py05.png" alt="파이썬5">
+                                                        <ul>
+                                                            <li>오차역전파법과 야코비안 행렬</li>
+                                                            <li>Shin's Lab</li>
+                                                            <li>￦ 39,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_py06.png" alt="파이썬6">
+                                                        <ul>
+                                                            <li>넘파이 마스터 클래스</li>
+                                                            <li>Shin's Lab</li>
+                                                            <li>￦ 39,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tic-right">
+                                <div>
+                                    <ul>
+                                        <li>강좌수 <br> 소요시간</li>
+                                        <li>6개 <br> 120시간</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>총액 <br> 6개월 할부</li>
+                                        <li> ￦ 234,600 <br> 월 ￦ 39,100</li>
+                                    </ul>
+                                </div>
+                                <a href="#">자세히 보기</a>
+                            </div>
+                        </div>
+                        <h4 id="chobo2">Node.js 입문 한 번에 끝내기</h4>
+                        <div class="ticket">
+                            <div class="tic-left">
+                                <h5>문과도 쉽게 배우는 백엔드 기초</h5>
+                                <div class="road_button">
+                                    <img src="images/roadmap_left.png" alt="왼쪽" class="road_buttonL2">
+                                    <img src="images/roadmap_right.png" alt="오른쪽" class="road_buttonR2">
+                                </div>
+                                <div class="road_top2">
+                                    <div class="road_middle2">
+                                        <ul class="road_list">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_bs01.png" alt="기본1">
+                                                        <ul>
+                                                            <li>생활코딩 - HTML& Internet</li>
+                                                            <li>생활코딩</li>
+                                                            <li>￦ 5,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_bs02.png" alt="기본2">
+                                                        <ul>
+                                                            <li>생활코딩 - DNS & HTTP</li>
+                                                            <li>생활코딩</li>
+                                                            <li>￦ 5,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_bs03.png" alt="기본3">
+                                                        <ul>
+                                                            <li>생활코딩 - Node.js</li>
+                                                            <li>생활코딩</li>
+                                                            <li>￦ 5,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_bs04.png" alt="기본4">
+                                                        <ul>
+                                                            <li>생활코딩 - 쿠키와 인증</li>
+                                                            <li>생활코딩</li>
+                                                            <li>￦ 5,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_bs05.png" alt="기본5">
+                                                        <ul>
+                                                            <li>비전공자를 위한 웹 튜토리얼</li>
+                                                            <li>생활코딩</li>
+                                                            <li>￦ 5,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_bs06.png" alt="기본6">
+                                                        <ul>
+                                                            <li>HTML-CSS for newbie</li>
+                                                            <li>생활코딩</li>
+                                                            <li>￦ 5,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tic-right">
+                                <div>
+                                    <ul>
+                                        <li>강좌수 <br> 소요시간</li>
+                                        <li>6개 <br> 6시간</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>총액 <br> 6개월 할부</li>
+                                        <li> ￦ 30,000 <br> 월 ￦ 5,000</li>
+                                    </ul>
+                                </div>
+                                <a href="#">자세히 보기</a>
+                            </div>
+                        </div>
+                        <h4 id="chobo3">비전공자도 이해하는 풀스택 입문 - Python</h4>
+                        <div class="ticket">
+                            <div class="tic-left">
+                                <h5>하루 1-2시간으로 필수 기초 장착! </h5>
+                                <div class="road_button">
+                                    <img src="images/roadmap_left.png" alt="왼쪽" class="road_buttonL3">
+                                    <img src="images/roadmap_right.png" alt="오른쪽" class="road_buttonR3">
+                                </div>
+                                <div class="road_top3">
+                                    <div class="road_middle3">
+                                        <ul class="road_list">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_hn01.png" alt="한눈1">
+                                                        <ul>
+                                                            <li>한 눈에 끝내는 HTML/CSS</li>
+                                                            <li>아라조</li>
+                                                            <li>￦ 10,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_hn02.png" alt="한눈2">
+                                                        <ul>
+                                                            <li>한 눈에 끝내는 JAVA</li>
+                                                            <li>아라조</li>
+                                                            <li>￦ 10,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_hn03.png" alt="한눈3">
+                                                        <ul>
+                                                            <li>한 눈에 끝내는 파이썬3</li>
+                                                            <li>아라조</li>
+                                                            <li>￦ 10,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_hn04.png" alt="한눈4">
+                                                        <ul>
+                                                            <li>한 눈에 끝내는 Animation</li>
+                                                            <li>아라조</li>
+                                                            <li>￦ 10,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_hn05.png" alt="한눈5">
+                                                        <ul>
+                                                            <li>한 눈에 끝내는 Ruby</li>
+                                                            <li>아라조</li>
+                                                            <li>￦ 10,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_hn06.png" alt="한눈6">
+                                                        <ul>
+                                                            <li>한 눈에 끝내는 SQL</li>
+                                                            <li>아라조</li>
+                                                            <li>￦ 10,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tic-right">
+                                <div>
+                                    <ul>
+                                        <li>강좌수 <br> 소요시간</li>
+                                        <li>6개 <br> 18시간</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>총액 <br> 6개월 할부</li>
+                                        <li> ￦ 60,000 <br> 월 ￦ 10,500</li>
+                                    </ul>
+                                </div>
+                                <a href="#">자세히 보기</a>
+                            </div>
+                        </div>
+                        <h4 id="chobo4">비전공자도 이해하는 풀스택 입문 - JavsScript</h4>
+                        <div class="ticket">
+                            <div class="tic-left">
+                                <h5>누구나 만드는 나만의 웹 포트폴리오</h5>
+                                <div class="road_button">
+                                    <img src="images/roadmap_left.png" alt="왼쪽" class="road_buttonL4">
+                                    <img src="images/roadmap_right.png" alt="오른쪽" class="road_buttonR4">
+                                </div>
+                                <div class="road_top4">
+                                    <div class="road_middle4">
+                                        <ul class="road_list">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_ar01.png" alt="코드고1">
+                                                        <ul>
+                                                            <li>처음 시작하는 HTML</li>
+                                                            <li>코드고</li>
+                                                            <li>￦ 15,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_ar02.png" alt="코드고2">
+                                                        <ul>
+                                                            <li>처음 시작하는 CSS</li>
+                                                            <li>코드고</li>
+                                                            <li>￦ 15,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_ar03.png" alt="코드고3">
+                                                        <ul>
+                                                            <li>처음 시작하는 Javascript</li>
+                                                            <li>코드고</li>
+                                                            <li>￦ 15,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_ar04.png" alt="코드고4">
+                                                        <ul>
+                                                            <li>iOS 앱만들기 Part1</li>
+                                                            <li>코드고</li>
+                                                            <li>￦ 15,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_ar05.png" alt="코드고5">
+                                                        <ul>
+                                                            <li>iOS 앱만들기 Part2</li>
+                                                            <li>코드고</li>
+                                                            <li>￦ 15,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="images/road_ar06.png" alt="코드고6">
+                                                        <ul>
+                                                            <li>오늘의집 UI클론</li>
+                                                            <li>코드고</li>
+                                                            <li>￦ 15,000</li>
+                                                        </ul>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tic-right">
+                                <div>
+                                    <ul>
+                                        <li>강좌수 <br> 소요시간</li>
+                                        <li>6개 <br> 24시간</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>총액 <br> 6개월 할부</li>
+                                        <li> ￦ 90,000 <br> 월 ￦ 16,000</li>
+                                    </ul>
+                                </div>
+                                <a href="#">자세히 보기</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="roadmap_right">
+                <div class="roadmap_rightbox">
+                    <h4>같이 들으면 이득! 망설이면 사라져요!</h4>
+                    <p>이벤트 기간:2022년 06월 01일부터 종료시까지 </p>
+                    <div>
+                        <p class="rightcos">코스 선택</p>
+                        <p>자세히 보기</p>
+                        <ul class="rightbox">
+                            <li><a href="#chobo1">파이썬으로 시작하는 딥러닝 입문 <span>￦234,600</span></a></li>
+                            <li><a href="#chobo2">Node.js 입문 한 번에 끝내기<span>￦30,000</span></a></li>
+                            <li><a href="#chobo3">비전공자도 이해하는 풀스택 입문 - Python<span>￦60,000</span></a></li>
+                            <li><a href="#chobo4">비전공자도 이해하는 풀스택 입문 - Javascript<span>￦90,000</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="roadmap_bottom">
+                <div class="roadmap_fixed">
+                        <p class="bottomcos">코스 선택</p>
+                        <p>자세히 보기</p>
+                        <ul class="bottombox">
+                            <li><a href="#chobo1">파이썬으로 시작하는 딥러닝 입문 <span>￦234,600</span></a></li>
+                            <li><a href="#chobo2">Node.js 입문 한 번에 끝내기<span>￦30,000</span></a></li>
+                            <li><a href="#chobo3">비전공자도 이해하는 풀스택 입문 - Python<span>￦60,000</span></a></li>
+                            <li><a href="#chobbo4">비전공자도 이해하는 풀스택 입문 - Javascript<span>￦90,000</span></a></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="help_button">
+            <a href="#" class="help">
+                <img src="images/help.png" alt="고객센터">
+            </a>
+            <div class="help_box">
+                <h4><span>코드고</span> 고객지원</h4>
+                <p>상담 시간: 10:00 - 19:00 (평일)<br>
+                점심 시간: 12:10 - 13:00</p>
+                <ul>
+                    <li><a href="#">새문의하기</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">공지사항</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="footer-R">
+            <ul>
+                <li><a href="#">코드고 소개</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">청소년보호정책</a></li>
+                <li><a href="#">사업자정보확인</a></li>
+            </ul>
+            <br>
+            <p>(주)코드고 대표:김원재 ㅣ E-mail:codego@codego.co.kr ㅣ 사업자번호:123-45-6789
+            ㅣ 주소:경기도 부천시 심곡동 172-15 경동빌딩 5층 ㅣ 대표번호:010-1234-5678
+            <br>
+            Copyrght 2022. CODEGO All Rights Reserved.<br>
+            (이 웹사이트는 edge 이상 버전과 호환되어있습니다.)</p>
+        </div>
+    </footer>
+</body>
+</html>

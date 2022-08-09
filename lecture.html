@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODEGO lecture</title>
+    <link rel="stylesheet" href="master.css">
+    <link rel="icon" href="images/favicon.png">
+    <!--[if lt IE 9]>
+	<script src="html5shiv-master/dist/html5shiv.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-1.8.1.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
+    <script src="js/swipe.js"></script>
+
+    <script>
+        $(function(){
+            var m=$('#gnb>ul>li>a');
+
+            m.each(function(){
+                $(this).click(function(){
+                    $(this).next().slideToggle(200)
+                    .parent().siblings().find('ul:visible').slideUp(400);
+                });
+        
+			});
+		});
+        /* a를 클릭하면 그에 맞는 ul 펼침 다른 a 클릭시 펼쳐져있던 ul 숨김*/
+    </script>
+
+    <script>
+        $(function(){
+            //변수 선언 초기값
+            var $beginNum=0;
+            var $beginNum2=0;
+            var $beginNum3=0;
+            /*.allMenu_menu 클릭했을때 네비게이션 항목들*/
+            $('.allMenu_menu').click(function(){ //메뉴버튼 클릭시
+                    $('.gnb-sub').slideToggle('fast'); //.gnb 슬라이드토글
+            });
+
+            /*햄버거 메뉴 클릭 시 햄버거가 X 모양으로 변경*/
+            const menuTrigger = document.querySelector('.allMenu_menu');
+
+            menuTrigger.addEventListener('click', (event) => {
+            event.currentTarget.classList.toggle('active-1');
+            });
+
+            // $('.lecture_button').click(function(){ //강의버튼 클릭시
+            //         $('.lecture').slideToggle('fast'); //.lecture 슬라이드토글
+            // });
+
+            // $('.comunity_button').click(function(){ //커뮤니티버튼 클릭시
+            //         $('.comunity').slideToggle('fast'); //.comunity 슬라이드토글
+            // });
+
+            // $('.roadmap_button').click(function(){ //로드맵버튼 클릭시
+            //         $('.roadmap').slideToggle('fast'); //.roadmap 슬라이드토글
+            // });
+
+            // $('.allMenu_search').click(function(){ //검색버튼 클릭시
+            //         $('.search_box').slideToggle('slow'); //검색박스 슬라이드토글
+            // });
+
+            $('.help').click(function(){ //고객센터 버튼 클릭시
+                    $('.help_box').fadeToggle('fast'); //고객센터 박스 슬라이드토글
+            });
+
+            /*.lecture_box_a 클릭했을때 네비게이션 항목들*/
+            $('.lecture_box_a').click(function(){ //전체메뉴 클릭시
+                    $('.lecture_gnb').slideToggle('slow'); //.lecture_gnb 슬라이드토글
+            });
+
+            /*lecture_arrowR btn를 클릭할때: $beginNum++(1씩 증가하기) 3칸사이즈 만큼 이동*/
+            $('.lecture_arrowR').click(function(){
+                if($beginNum>=1)return false;
+                $beginNum++;
+                var $begin_w=$('.lecture_top').width();
+                $('.lecture_middle').animate({'left':-$begin_w*$beginNum},400,function(){
+                });
+            });
+
+            /*lecture_arrowL btn를 클릭할때: $beginNum--(1씩 감소하기) 1180px만큼 이동*/
+            $('.lecture_arrowL').click(function(){
+                if($beginNum<=0)return false;
+                $beginNum--;
+                var $begin_w=$('.lecture_top').width();
+                $('.lecture_middle').animate({'left':-$begin_w*$beginNum},400,function(){
+                });
+            });
+
+            /*lecture_arrowR btn를 클릭할때: $beginNum++(1씩 증가하기) 1180px만큼 이동*/
+            $('.lecture_arrowR2').click(function(){
+                if($beginNum2>=1)return false;
+                $beginNum2++;
+                var $begin_w2=$('.lecture_top2').width();
+                $('.lecture_middle2').animate({'left':-$begin_w2*$beginNum2},400,function(){
+                });
+            });
+
+            /*lecture_arrowL btn를 클릭할때: $beginNum--(1씩 감소하기) 1180px만큼 이동*/
+            $('.lecture_arrowL2').click(function(){
+                if($beginNum2<=0)return false;
+                $beginNum2--;
+                var $begin_w2=$('.lecture_top2').width();
+                $('.lecture_middle2').animate({'left':-$begin_w2*$beginNum2},400,function(){
+                });
+            });
+
+            /*lecture_arrowR btn를 클릭할때: $beginNum++(1씩 증가하기) 1180px만큼 이동*/
+            $('.lecture_arrowR3').click(function(){
+                if($beginNum3>=1)return false;
+                $beginNum3++;
+                var $begin_w3=$('.lecture_top3').width();
+                $('.lecture_middle3').animate({'left':-$begin_w3*$beginNum3},400,function(){
+                });
+            });
+
+            /*lecture_arrowL btn를 클릭할때: $beginNum--(1씩 감소하기) 1180px만큼 이동*/
+            $('.lecture_arrowL3').click(function(){
+                if($beginNum3<=0)return false;
+                $beginNum3--;
+                var $begin_w3=$('.lecture_top3').width();
+                $('.lecture_middle3').animate({'left':-$begin_w3*$beginNum3},400,function(){
+                });
+            });
+        });
+    </script>
+</head>
+<body id="lecture">
+    <header id="header">
+        <div id="Top-nav">
+            <div id="TopHeader">
+                <div>
+                    <h1><a href="index.html"><img src="images/CODEGO.png" alt="CODEGO"></a></h1>
+                    <div class="allMenu_view">
+                        <a href="#" class="allMenu_search"><img src="images/search.png" alt="검색"></a>
+                        <a href="#" class="allMenu_menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+                <nav id="gnb">
+                    <ul class="gnb-sub">
+                        <li><a href="#" class="lecture_button">강의</a>
+                            <ul class="lecture">
+                                    <li><a href="#">전체 강의</a></li>
+                                    <li><a href="#">기초 강의</a></li>
+                                    <li><a href="#">웹 개발</a></li>
+                                    <li><a href="#">프론트엔드·백엔드</a></li>
+                                    <li><a href="#">모바일 앱 개발</a></li>
+                                    <li><a href="#">프로그래밍 언어</a></li>
+                                    <li><a href="#">알고리즘·자료구조</a></li>
+                                    <li><a href="#">데이터 사이언스</a></li>
+                                    <li><a href="#">데이터베이스</a></li>
+                                    <li><a href="#" class="last">게임 개발</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="comunity_button">커뮤니티</a>
+                            <ul class="comunity">
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="#">Study</a></li>
+                                <li><a href="#">수강후기</a></li>
+                                <li><a href="#" class="last">멘토링</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="roadmap_button">로드맵</a>
+                            <ul class="roadmap">
+                                <li><a href="roadmap.html">추천 로드맵</a></li>
+                                <li><a href="roadmap.html" class="last">나의 로드맵</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">채용정보</a>
+                            <ul>
+                                <li><a href="#">채용 공고</a></li>
+                                <li><a href="#">코드고 채용</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="ui">
+                    <form method="post" class="search_box">
+                        <label for="u-search"></label>
+                        <input type="search" id="u-serach">
+                        <input type="image" src="images/search.png" alt="submit">
+                    </form>
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <article id="lecture_01">
+            <div class="lecture_box">
+                <a href="#" class="lecture_box_a"><img src="images/all-menu.png" alt="올메뉴"></a>
+            </div>
+            <div class="selection">
+                <select name="all">
+                    <option value="전체">전체</option>
+                    <option value="유료">유료</option>
+                    <option value="무료">무료</option>
+                    <option value="할인">할인</option>
+                </select>
+                <select name="rank">
+                    <option value="추천순">추천순</option>
+                    <option value="인기순">인기순</option>
+                    <option value="최신순">최신순</option>
+                    <option value="평점순">평점순</option>
+                    <option value="인원순">인원순</option>
+                </select>
+            </div>
+            <div class="lecture_01_box">
+                <div class="lecture_nav">
+                    <ul class="lecture_gnb">
+                        <li><a href="#">전체 강의</a></li>
+                        <li><a href="#">기초 강의</a></li>
+                        <li><a href="#">웹개발</a></li>
+                        <li><a href="#">프론트엔드·백엔드</a></li>
+                        <li><a href="#">모바일 앱 개발</a></li>
+                        <li><a href="#">프로그래밍 언어</a></li>
+                        <li><a href="#">알고리즘·자료구조</a></li>
+                        <li><a href="#">데이터 사이언스</a></li>
+                        <li><a href="#">데이터베이스</a></li>
+                        <li><a href="#">게임 개발</a></li>
+                    </ul>
+                </div>
+
+                <div class="lecture_01_contents">
+                    <ul>
+                        <li>
+                            <div class="beginTitle">
+                                <a href="#">
+                                    <img src="images/lecture-1.png" alt="탑강의1">
+                                    <p>파이썬 머신러닝 완벽 가이드</p>
+                                    <p>김상규</p>
+                                    <img src="images/star2.png" alt="star" class="star">
+                                    <p>￦ 42,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginTitle">
+                                <a href="#">
+                                    <img src="images/lecture-2.png" alt="탑강의2">
+                                    <p>제대로 파는 Git & GitHub</p>
+                                    <p>이성철</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 29,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginTitle">
+                                <a href="#">
+                                    <img src="images/lecture-3.png" alt="탑강의3">
+                                    <p>HTML,CSS,JS 퍼블리싱</p>
+                                    <p>서현준</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 22,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginTitle">
+                                <a href="#">
+                                    <img src="images/lecture-4.png" alt="탑강의4">
+                                    <p>모두를 위한 개발자 가이드</p>
+                                    <p>김태인</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 25,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginTitle">
+                                <a href="#">
+                                    <img src="images/lecture-5.png" alt="탑강의5">
+                                    <p>게임 프로그래머 가이드</p>
+                                    <p>김병혁</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 30,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginTitle">
+                                <a href="#">
+                                    <img src="images/lecture-6.png" alt="탑강의6">
+                                    <p>그림으로 배우는 운영체제</p>
+                                    <p>조성연</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 32,000</p>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </article>
+
+        <article id="lecture_02">
+            <div class="lecture_tab">
+                <input type="radio" id="lecture_new" name="toggle" checked>
+                <input type="radio" id="lecture_sale" name="toggle">
+                <input type="radio" id="lecture_hot" name="toggle">
+
+                <p id="lecture_button">
+                    <label for="lecture_new">새로나온 강의<img src="images/NEW.png" alt="NEW"></label>
+                    <label for="lecture_sale">실시간 할인 강의<img src="images/money.png" alt="MONEY"></label>
+                    <label for="lecture_hot">인기많은 강의<img src="images/fire.png" alt="FIRE"></label>
+                </p>
+                <div class="tablist">
+                    <a href="#">
+                            <img src="images/lecture_new.png" alt="NEWBanner">
+                            <div>
+                                <h4>새로나온 강의<img src="images/NEW.png" alt="NEW"></h4>
+                                <p><span>NEW!</span></p>
+                                <p>누구보다 빠르게!</p>
+                                <p>강의 듣기 Go!</p>
+                                <p>전체 보기 →</p>
+                            </div>
+                    </a>
+                    <div class="lecture_top">
+                        <div class="lecture_middle">
+                            <ul class="lecture_list">
+                                <li><a href="#">
+                                    <img src="images/tab-new01.png" alt="new강의1">
+                                    <p>누구나 쉽게 배우는 웹개발</p>
+                                    <p>판다코딩</p>
+                                    <img src="images/star2.png" alt="star" class="star">
+                                    <p>￦ 18,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-new02.png" alt="new강의2">
+                                    <p>비전공자를 위한 웹 튜토리얼</p>
+                                    <p>오승민</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 15,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-new03.png" alt="new강의3">
+                                    <p>머신러닝을 위한 통계학 기초</p>
+                                    <p>이몽용</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 11,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-new04.png" alt="new강의4">
+                                    <p>R 프로그래밍 기초</p>
+                                    <p>변정환</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 23,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-new05.png" alt="new강의5">
+                                    <p>한큐에 끝내는 해커톤 입문</p>
+                                    <p>황인재</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 9,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-new06.png" alt="new강의6">
+                                    <p>코딩셰프의 Flutter</p>
+                                    <p>김진형</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 33,000</p>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="lecture_arrowL"><img src="images/arrowL.png" alt="왼쪽화살표"></p>
+                    <p class="lecture_arrowR"><img src="images/arrowR.png" alt="오른쪽화살표"></p>
+                </div>
+                <div class="tablist">
+                    <a href="#">
+                        <img src="images/lecture_sale.png" alt="SALEBanner">
+                        <div>
+                            <h4>실시간 할인 강의<img src="images/money.png" alt="MONEY"></h4>
+                            <p><span>SALE!</span></p>
+                            <p>저렴한 가격으로!</p>
+                            <p>강의 듣기 Go!</p>
+                            <p>전체 보기 →</p>
+                        </div>
+                    </a>
+                    <div class="lecture_top2">
+                        <div class="lecture_middle2">
+                                <ul class="lecture_list">
+                                    <li><a href="#">
+                                        <img src="images/tab-sale01.png" alt="sale강의1">
+                                        <p>Java for Android</p>
+                                        <p>공주환</p>
+                                        <img src="images/star2.png" alt="star"  class="star">
+                                        <p><del>￦ 20,000</del> <span>￦ 15,000</span></p>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <img src="images/tab-sale02.png" alt="sale강의2">
+                                        <p>컴퓨터 일반론</p>
+                                        <p>남관현</p>
+                                        <img src="images/star2.png" alt="star"  class="star">
+                                        <p><del>￦ 21,000</del> <span>￦ 16,000</span></p>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <img src="images/tab-sale03.png" alt="sale강의3">
+                                        <p>딥러닝 입문</p>
+                                        <p>김준용</p>
+                                        <img src="images/star2.png" alt="star"  class="star">
+                                        <p><del>￦ 36,000</del> <span>￦ 20,000</span></p>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <img src="images/tab-sale04.png" alt="sale강의4">
+                                        <p>추억의 오락실게임 제작</p>
+                                        <p>신반석</p>
+                                        <img src="images/star2.png" alt="star"  class="star">
+                                        <p><del>￦ 18,000</del> <span>￦ 10,000</span></p>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <img src="images/tab-sale05.png" alt="sale강의5">
+                                        <p>자바스크립트 튜토리얼</p>
+                                        <p>제스퍼</p>
+                                        <img src="images/star2.png" alt="star"  class="star">
+                                        <p><del>￦ 16,000</del> <span>￦ 8,000</span></p>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <img src="images/tab-sale06.png" alt="sale강의6">
+                                        <p>코틀린 기반 안드로이드</p>
+                                        <p>코그모</p>
+                                        <img src="images/star2.png" alt="star"  class="star">
+                                        <p><del>￦ 32,000</del> <span>￦ 15,000</span></p>
+                                    </a></li>
+                                </ul>
+                        </div>
+                    </div>
+                    <p class="lecture_arrowL2"><img src="images/arrowL.png" alt="왼쪽화살표"></p>
+                    <p class="lecture_arrowR2"><img src="images/arrowR.png" alt="오른쪽화살표"></p>
+                </div>
+                <div class="tablist">
+                    <a href="#">
+                        <img src="images/lecture_hot.png" alt="HOTBanner">
+                        <div>
+                            <h4>인기많은 강의<img src="images/fire.png" alt="FIRE"></h4>
+                            <p><span>HOT!</span></p>
+                            <p>많은 학생이 찾는!</p>
+                            <p>강의 듣기 Go!</p>
+                            <p>전체 보기 →</p>
+                        </div>
+                    </a>
+                    <div class="lecture_top3">
+                        <div class="lecture_middle3">
+                            <ul class="lecture_list">
+                                <li><a href="#">
+                                    <img src="images/tab-hot01.png" alt="hot강의1">
+                                    <p>Moblie Ux Design</p>
+                                    <p>디자이너 유</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 15,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-hot02.png" alt="hot강의2">
+                                    <p>클라우드 컴퓨팅 입문</p>
+                                    <p>드록바</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 21,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-hot03.png" alt="hot강의3">
+                                    <p>Start Kotlin</p>
+                                    <p>김방준</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 18,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-hot04.png" alt="hot강의4">
+                                    <p>HTML & CSS는 재밌다.</p>
+                                    <p>김버그</p>
+                                    <img src="images/star2.png" alt="star"  class="star">
+                                    <p>￦ 26,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-hot05.png" alt="hot강의5">
+                                    <p>동시에 배우는 C, C++</p>
+                                    <p>김대호</p>
+                                    <img src="images/star2.png" alt="star" class="star">
+                                    <p>￦ 28,000</p>
+                                </a></li>
+                                <li><a href="#">
+                                    <img src="images/tab-hot06.png" alt="hot강의6">
+                                    <p>BIG DATA ANALYSIS</p>
+                                    <p>김정재</p>
+                                    <img src="images/star2.png" alt="star" class="star">
+                                    <p>￦ 36,000</p>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="lecture_arrowL3"><img src="images/arrowL.png" alt="왼쪽화살표"></p>
+                <p class="lecture_arrowR3"><img src="images/arrowR.png" alt="오른쪽화살표"></p>
+                </div>
+            </div>
+        </article>
+
+        <article id="lecture_03">
+            <h4>기초 강의 추천<img src="images/present.png" alt="선물"></h4>
+            <div>
+                <div class="lecture_03_tablist">
+                    <ul>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-1.png" alt="강의1">
+                                    <p>파이썬 머신러닝 완벽 가이드</p>
+                                    <p>김상규</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 42,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-2.png" alt="강의2">
+                                    <p>제대로 파는 Git & GitHub</p>
+                                    <p>이성철</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 29,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-3.png" alt="강의3">
+                                    <p>HTML,CSS,JS 퍼블리싱</p>
+                                    <p>서현준</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 22,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-4.png" alt="강의4">
+                                    <p>모두를 위한 개발자 가이드</p>
+                                    <p>김태인</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 25,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-5.png" alt="강의5">
+                                    <p>게임 프로그래머 가이드</p>
+                                    <p>김병혁</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 30,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-6.png" alt="강의6">
+                                    <p>그림으로 배우는 운영체제</p>
+                                    <p>조성연</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 32,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-7.png" alt="강의7">
+                                    <p>Core Foundation Process</p>
+                                    <p>남관현</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 21,000</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="beginlist">
+                                <a href="#">
+                                    <img src="images/lecture-8.png" alt="강의8">
+                                    <p>우아하게 앤서블 배워보기</p>
+                                    <p>공주환</p>
+                                    <img src="images/star2.png" alt="star">
+                                    <p>￦ 15,000</p>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lecture_page">
+                <p>이전</p>
+                <p>다음</p>
+                <ul>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                </ul>
+            </div>
+        </article>
+        <aside id="SubBanner">
+            <div id="BottomBanner">
+                <ul class="sub-banner">
+                    <li>
+                        <a href="roadmap.html"><img src="images/sub-banner1.png" alt="subbanner-1"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner2.png" alt="subbanner-2"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner3.png" alt="subbanner-3"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner4.png" alt="subbanner-4"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sub-banner.png" alt="subbanner-5"></a>
+                    </li>
+                </ul>
+                <form method="post" class="button_box">
+                    <input type="radio" class="button1" name="button" checked>
+                    <input type="radio" class="button2" name="button">
+                    <input type="radio" class="button3" name="button">
+                    <input type="radio" class="button4" name="button">
+                    <input type="radio" class="button5" name="button">
+                </form>
+                <script>
+                    document.querySelector('.button1').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(0%)';
+                    });
+                    document.querySelector('.button2').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-20%)';
+                    });
+                    document.querySelector('.button3').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-40%)';
+                    });
+                    document.querySelector('.button4').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-60%)';
+                    });
+                    document.querySelector('.button5').addEventListener('click', function(){
+                        document.querySelector('.sub-banner').style.transform = 'translate(-80%)';
+                    });
+                </script>
+            </div>
+            <div id="BottomBanner-M">
+                <ul class="sub-banner-M">
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner1.png" alt="subbanner-1m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner2.png" alt="subbanner-2m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner3.png" alt="subbanner-3m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner4.png" alt="subbanner-4m"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/m-sub-banner5.png" alt="subbanner-5m"></a>
+                    </li>
+                </ul>
+                <form method="post" class="button_box">
+                    <input type="radio" class="button1M" name="button" checked>
+                    <input type="radio" class="button2M" name="button">
+                    <input type="radio" class="button3M" name="button">
+                    <input type="radio" class="button4M" name="button">
+                    <input type="radio" class="button5M" name="button">
+                </form>
+                <script>
+                    document.querySelector('.button1M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(0%)';
+                    });
+                    document.querySelector('.button2M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-20%)';
+                    });
+                    document.querySelector('.button3M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-40%)';
+                    });
+                    document.querySelector('.button4M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-60%)';
+                    });
+                    document.querySelector('.button5M').addEventListener('click', function(){
+                        document.querySelector('.sub-banner-M').style.transform = 'translate(-80%)';
+                    });
+                </script>
+            </div>
+        </aside>
+    </section>
+    <section>
+        <div class="help_button">
+            <a href="#" class="help">
+                <img src="images/help.png" alt="고객센터">
+            </a>
+            <div class="help_box">
+                <h4><span>코드고</span> 고객지원</h4>
+                <p>상담 시간: 10:00 - 19:00 (평일)<br>
+                점심 시간: 12:10 - 13:00</p>
+                <ul>
+                    <li><a href="#">새문의하기</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">공지사항</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="footer-R">
+            <ul>
+                <li><a href="#">코드고 소개</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">청소년보호정책</a></li>
+                <li><a href="#">사업자정보확인</a></li>
+            </ul>
+            <br>
+            <p>(주)코드고 대표:김원재 ㅣ E-mail:codego@codego.co.kr ㅣ 사업자번호:123-45-6789
+            ㅣ 주소:경기도 부천시 심곡동 172-15 경동빌딩 5층 ㅣ 대표번호:010-1234-5678
+            <br>
+            Copyrght 2022. CODEGO All Rights Reserved.<br>
+            (이 웹사이트는 edge 이상 버전과 호환되어있습니다.)</p>
+        </div>
+    </footer>
+</body>
+</html>
