@@ -1484,7 +1484,7 @@
 
         #roadmap_bottom{border-top:1px solid #ccc; z-index:100; width:100%; height:70px; position: fixed; bottom:0; left:0; background:#fff;}
         .roadmap_fixed{width:90%; margin:0 auto;}
-        .roadmap_fixed p{display:inline-block;margin-top:3%;padding: 10px 5px; box-sizing: border-box;}
+        .roadmap_fixed p{display:inline-block;margin-top:3%;padding: 10px 3px; box-sizing: border-box;}
         .roadmap_fixed p:first-child {color:#848484; border-radius:10px; width:70%; border:1px solid #848484; text-indent: 10px; background:url(images/roadbox_right-m.png)no-repeat 90% 50%;}
         .roadmap_fixed p:nth-child(2) {border-radius:8px; color:#fff;width:25%; background:#38e5ff; text-align: center; margin-left:3%;}
 }
