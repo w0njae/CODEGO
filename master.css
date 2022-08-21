@@ -1770,8 +1770,8 @@
     /*Content newEdu*/
     #newEdu{}
     #newEdu>div{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+	flex-direction:column;
         margin-bottom:30px;
         overflow:hidden;
         border:solid 1px #ccc;
