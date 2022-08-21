@@ -1042,8 +1042,8 @@
     /*Content newEdu*/
     #newEdu{}
     #newEdu>div{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+	flex-direction:column;
         margin-bottom:30px;
         overflow:hidden;
         border:solid 1px #ccc;
@@ -1123,7 +1123,7 @@
     #footer-R{font-size:11px; width:100%; text-align: center;
     background: rgba(0,0,0,0.5); padding-top:15px;}
     #footer-R p{color:#fff; padding:20px;}
-    #footer-R ul{width:370px; margin:0 auto; text-align: center;}
+    #footer-R ul{width:100%; display:flex; justify-content:space-around; margin:0 auto; text-align: center;}
     #footer-R ul li{float:left;}
     #footer-R ul li a{color:#fff; padding:5px; position: relative; display:block;}
     #footer-R ul li a:after{
@@ -1770,8 +1770,8 @@
     /*Content newEdu*/
     #newEdu{}
     #newEdu>div{
-        display: flex;
-	flex-direction:column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         margin-bottom:30px;
         overflow:hidden;
         border:solid 1px #ccc;
@@ -1853,7 +1853,7 @@
     #footer-R{font-size:11px; width:100%; text-align: center;
     background: rgba(0,0,0,0.5); padding-top:15px;}
     #footer-R p{color:#fff; padding:20px;}
-    #footer-R ul{width:100%; display:flex; justify-content:space-around; margin:0 auto; text-align: center;}
+    #footer-R ul{width:370px; margin:0 auto; text-align: center;}
     #footer-R ul li{float:left;}
     #footer-R ul li a{color:#fff; padding:5px; position: relative; display:block;}
     #footer-R ul li a:after{
